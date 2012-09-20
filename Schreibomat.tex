@@ -76,7 +76,65 @@
 
 \section*{Tools}
 
+\section{Huffmann-Codierung}
 
+führt immer zu einem regulären binären Baum.
 
+\begin{definition}[Entropie]
+Durchschnittliche Anzahl Zeichen, die für Zeichen des Alphabets $A$ verwendet werden:
+\[
+E(A) = \sum\limits_{x \in A} p(x) \cdot \log_2 \frac{1}{p(x)}
+\]
+\end{definition}
+
+\section{Hamming Code}
+
+(4,7)-Code: 4 Informationsbits, 3 Parity-Bits.
+
+Nachricht, die in den Kanal verschickt werden soll:
+
+$(D_7, D_6, D_5, D_3)$
+
+Führt zu:
+
+$(D_7, D_6, D_5, P_4, D_3, P_2, P_1)$
+
+\[
+\begin{bmatrix}
+1 & 1 & 1 & \vline & 1 \\
+1 & 0 & 1 & \vline & 0 \\
+0 & 0 & 0 & \vline & 0
+\end{bmatrix}
+\]
+
+P4 = D7 + D6 + D5,
+
+P2 = D7 + D6 + D3,
+
+P1 = D7 + D5 + D3
+
+Generator-Matrix $G$, Checkmatrix $H$:
+
+\begin{eqnarray*}
+G &=& \begin{bmatrix}
+	D_7 & D_6 & D_5 & P_4 & D_3 & P_2 & P_1
+\end{bmatrix} \\
+&=& \begin{bmatrix}
+1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 0 & 1 & 0\\
+0 & 0 & 1 & 1 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 1 & 1 & 1
+\end{bmatrix} \begin{bmatrix}
+ D_7 & D_6 & D_5 & D_3
+\end{bmatrix} \\
+H &=& \begin{bmatrix}
+D_7 & D_6 & D_5 & P_4 & D_3 & P_2 & P_1
+\end{bmatrix} \\
+&=& \begin{bmatrix}
+1 & 1 & 1 & 1 & 0 & 0 & 0\\
+1 & 1 & 0 & 0 & 1 & 1 & 0\\
+1 & 0 & 1 & 0 & 1 & 0 & 1
+\end{bmatrix} \begin{bmatrix} P_4 & P_2 & P_1 \end{bmatrix}
+\end{eqnarray*}
 
 \end{document}
