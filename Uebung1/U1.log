@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.10)  24 SEP 2012 20:15
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.10)  25 SEP 2012 09:32
 entering extended mode
 **U1.tex
 (C:\Devel\WissenschaftlichesRechnen\Uebung1\U1.tex
@@ -1060,17 +1060,18 @@ Overfull \hbox (49.52267pt too wide) in paragraph at lines 866--885
 [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 899.
 [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 899.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 915.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 915.
  (C:\Devel\WissenschaftlichesRechnen\Uebung1\U1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 899.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 915.
 Package rerunfilecheck Info: File `U1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16763 strings out of 494053
- 296198 string characters out of 3146191
+ 16764 strings out of 494053
+ 296204 string characters out of 3146191
  413540 words of memory out of 3000000
  19695 multiletter control sequences out of 15000+200000
  11646 words of font info for 44 fonts, out of 3000000 for 9000
@@ -1087,9 +1088,9 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on U1.pdf (6 pages, 155281 bytes).
+Output written on U1.pdf (7 pages, 157569 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
+ 99 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

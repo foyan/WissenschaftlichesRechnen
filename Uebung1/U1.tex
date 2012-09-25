@@ -887,11 +887,27 @@ $d_3d_5d_6d_7$ & $p_1 = d_3+d_5+d_7$ & $p_2=d_3+d_6+d_7$ & $p_4=d_5+d_6+d_7$ & $
 
 \[
 H = \begin{bmatrix}
-1 & 0 & x & 0 & x & x & x \\
-0 & 1 & x & 0 & x & x & x \\
-0 & 0 & x & 1 & x & x & x \\
+0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 1 & 0 & 1 \\
 \end{bmatrix}
 \]
+
+Beispielsweise für das Datenwort 0010:
+\[
+H \begin{bmatrix}
+0 & 1 & 0 & 1 & 0 & 1 & 0
+\end{bmatrix}^T = \begin{bmatrix} 2 \\ 2 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0\end{bmatrix}
+\]
+
+Wenn hingegen ein Übertragungsfehler stattfindet, beispielsweise das dritte Bit gedreht ist:
+\[
+H \begin{bmatrix}
+0 & 1 & 1 & 1 & 0 & 1 & 0
+\end{bmatrix}^T = \begin{bmatrix} 2 \\ 3 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ 1\end{bmatrix}
+\]
+
+\item Der resultierende Vektor ist die binäre Repräsentation der Fehlerstelle: $011_b = 3$. Dementsprechend können wir diese Stelle korrigieren und erhalten das gültige, beabsichtigte Codewort.
 
 \end{itemize}
 \end{enumerate}
