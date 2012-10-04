@@ -1,2 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Huffmann-Codierung}{}% 1
 \BOOKMARK [1][-]{section.2}{Hamming Code}{}% 2
+\BOOKMARK [1][-]{section.3}{Konditionierung einer Matrix}{}% 3
+\BOOKMARK [1][-]{section.4}{Das Gauss'sche Eliminationsverfahren}{}% 4
+\BOOKMARK [1][-]{section.5}{LU-Dekomposition}{}% 5
+\BOOKMARK [2][-]{subsection.5.1}{Dekomposition von Doolittle}{section.5}% 6
+\BOOKMARK [2][-]{subsection.5.2}{Dekomposition von Cholesky}{section.5}% 7

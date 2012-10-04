@@ -65,6 +65,7 @@
 \newtheorem*{bemerkung}{Bemerkung}
 \newtheorem*{beweis}{Beweis}
 \newtheorem*{ubung}{Übung}
+\newtheorem{theorem}{Theorem}
 
 \title{Wissenschaftlicher, rechnender Schreibomat}
 \author{Florian}
@@ -136,5 +137,252 @@ D_7 & D_6 & D_5 & P_4 & D_3 & P_2 & P_1
 1 & 0 & 1 & 0 & 1 & 0 & 1
 \end{bmatrix} \begin{bmatrix} P_4 & P_2 & P_1 \end{bmatrix}
 \end{eqnarray*}
+
+\section{Konditionierung einer Matrix}
+
+\begin{beispiel} Finden einer Lösung. $y$ variiert: was bedeutet das für $x$?
+\begin{eqnarray*}
+2x + y &=& 3 \\
+2x + (1.001)y &=& 0 \\
+\Rightarrow y &=& 3 - 2x \\
+\end{eqnarray*}
+\end{beispiel}
+
+\begin{beispiel} Ist das Gleichungssystem singulär? $\det (A) = 0$
+\begin{eqnarray*}
+A &=& \begin{bmatrix}
+2.1 & -0.6 & 1.1 \\
+3.2 & 4.7 & -0.8 \\
+3.1 & -6.5 & 4.1
+\end{bmatrix} \\
+\Rightarrow \det (A) &=& 2.1\cdot 4.7 \cdot 4.1 + (-0.6)\cdot (-0.8) \cdot 3.1 + 1.1\cdot 3.2 \cdot (-6.5)
+\\ && -3.1\cdot 4.7 \cdot 1.1 - (-6.5)\cdot (-0.8) \cdot 2.1 - 4.1 \cdot 3.2 \cdot -0.6 \\
+&=& 0
+\end{eqnarray*}
+\end{beispiel}
+
+\section{Das Gauss'sche Eliminationsverfahren}
+
+\begin{beispiel} Nun.
+
+\[
+\begin{bmatrix}
+4 & -2 & 1 &\vline& 11 \\
+-2 & 4 & -2 &\vline& -16 \\
+1 & -2 & 4 &\vline& 17
+\end{bmatrix}
+\]
+Nach $(b) - (-0.5)\cdot (a)$:
+
+\[
+\begin{bmatrix}
+4 & -2 & 1 &\vline& 11 \\
+0 & 3 & -1.5 &\vline& -10.5 \\
+1 & -2 & 4 &\vline& 17
+\end{bmatrix}
+\]
+
+Nach $(c) - (-0.25)\cdot (a)$:
+
+\[
+\begin{bmatrix}
+4 & -2 & 1 &\vline& 11 \\
+0 & 3 & -1.5 &\vline& -10.5 \\
+0 & -1.5 & 3.75 &\vline&14.25
+\end{bmatrix}
+\]
+
+Nach $(c) - (-0.5)\cdot (b)$:
+
+\[
+\begin{bmatrix}
+4 & -2 & 1 &\vline& 11 \\
+0 & 3 & -1.5 &\vline& -10.5 \\
+0 & 0 & 3 &\vline&9
+\end{bmatrix}
+\]
+
+\[
+\Rightarrow \begin{bmatrix}
+4 & -2 & 1  \\
+0 & 3 & -1.5  \\
+0 & 0 & 3 
+\end{bmatrix} \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+ 11 \\
+ -10.5 \\
+ 9
+\end{bmatrix}
+\]
+
+\end{beispiel}
+
+\begin{beispiel}
+\[
+\begin{bmatrix}
+-6 & -4 & 1 &\vline& 22 \\ 
+-4 & 6 & -4 &\vline& -18 \\ 
+1 & -4 & 6 &\vline& 11
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+-6 & -4 & 1 &\vline& 22 \\ 
+0 & \frac{26} 3 & -\frac{14} 3 &\vline& -\frac{10} 3 \\ 
+0 & -\frac{10} 3 & 6 &\vline& 11
+\end{bmatrix}
+\]
+\end{beispiel}
+
+\section{LU-Dekomposition}
+
+\begin{theorem}
+Jede symmetrische Matrix kann sich in eine LU-Dekomposition zerlegen lassen.
+\end{theorem}
+
+\begin{description}
+
+\item[Dekomposition von Doolittle]
+
+\[
+L_{ii} = 1
+\]
+
+\item[Dekomposition von Count]
+
+\[
+U_{ii} = 1
+\]
+
+\item[Dekomposition von Cholesky]
+
+\[
+L = U^T
+\]
+
+Die Nebenbedingung ist, dass die Matrix $A$ positiv definit ist:
+
+\[
+\vec x^T A \vec x > 0
+\]
+
+\end{description}
+
+Warum LU-Dekomposition? Gleichungssystem: $Ax = b, A = L\cdot U \Rightarrow LUx = b$. Finde Lösung für $Ly = b$, dann $Ux = y$
+
+\subsection{Dekomposition von Doolittle}
+
+\[
+L = \begin{bmatrix}
+1 & 0 & 0 \\
+L_{21} & 1 & 0 \\
+L_{31} & L_{32} & 1 \\
+\end{bmatrix}, U = \begin{bmatrix}
+U_{11} & U_{12} & U_{13} \\
+0 & U_{22} & U_{23} \\
+0 & 0 & U_{33}
+\end{bmatrix}
+\]
+\[
+\Rightarrow L\cdot U = \begin{bmatrix}
+U_{11} & U_{12} & U_{13} \\
+U_{11} L_{21} & U_{11} L_{21} + U_{22} & L_{21} U_{13} + U_{23} \\
+U_{11} L_{31} & U_{12} L_{31} + U_{22} L_{32} & U_{13} L_{31} + U_{23} L_{32} + U_{33}
+\end{bmatrix}
+\]
+
+Darauf wird nun das Gauss'sche Eliminationsverfahren angewandt:
+
+2. Reihe: 2. Reihe - $L_{21}\cdot$ 1. Reihe
+3. Reihe: 3. Reihe - $L_{31}\cdot$ 1. Reihe
+
+\[
+\Rightarrow A' = \begin{bmatrix}
+U_{11} & U_{12}  & U_{13} \\
+0 & U_{22} & U_{23} \\
+0 & U_{22}L_{32} & U_{23}L_{32} + U_{33}
+\end{bmatrix}
+\]
+
+Neuer Gauss'scher Filterschritt:
+
+3. Reihe: 3. Reihe - $L_{32}\cdot$ 2. Reihe
+
+\[
+\Rightarrow A'' = \begin{bmatrix}
+U_{11} & U_{12}  & U_{13} \\
+0 & U_{22} & U_{23} \\
+0 & 0 & U_{33}
+\end{bmatrix}
+\]
+
+\subsection{Dekomposition von Cholesky}
+
+\[
+A= LL^T
+\]
+
+\begin{eqnarray*}
+A &=& \begin{bmatrix}
+A_{11} & A_{21} & A_{31} \\
+A_{12} & A_{22} & A_{32} \\
+A_{13} & A_{23} & A_{33}
+\end{bmatrix} = \begin{bmatrix}
+L_{11} & 0 & 0 \\
+L_{21} & L_{22} &  0 \\
+L_{31} & L_{32} & L_{33}
+\end{bmatrix} \cdot \begin{bmatrix}
+L_{11} & L_{21} & L_{31} \\
+0 & L_{22} & L_{32} \\
+0 & 0 & L_{33}
+\end{bmatrix} \\
+&=& \begin{bmatrix}
+L_{11}^2 & L_{11}L_{21} & L_{11}L_{31} \\
+L_{21}L_{11} & L_{21}^2 + L_{22}^2 & L_{21}L_{31} + L_{22}L_{32} \\
+L_{31}L_{11} & L_{31}L_{32} + L_{32}L_{22} & L_{31}^2 + L_{32}^2 + L_{33}^2
+\end{bmatrix}
+\end{eqnarray*}
+
+Aha.
+
+\begin{eqnarray*}
+A_{11} = L_{11}^2 &\leftrightarrow& L_{11} = \sqrt{A_{11}} \\
+A_{21} = L_{11}L_{21} &\leftrightarrow& L_{21} = \frac{A_{21}}{L_{11}} = \frac{A_{21}}{\sqrt{A_{11}}} \\
+A_{31} = L_{11}L_{31} &\leftrightarrow& L_{31} = \frac{A_{31}}{L_{11}} = \frac{A_{31}}{\sqrt{A_{11}}} \\
+&& L_{32} = \frac{(A_{32} - L_{21}L_{31})}{L_{22}} \\
+L_{22} = \sqrt{A_{22} - L_{21}^2} && \\
+L_{31} = \frac{A_{32} - L_{32}L_{22}}{L_{21}} && \\
+A_{33} = L_{31}^2-L_{32}^2 + L_{32}^2 &\leftrightarrow& L_{33} = \sqrt{A_{33}- (L_{31}L_{32})}
+\end{eqnarray*}
+
+\begin{beispiel}
+\begin{eqnarray*}
+A &=& \begin{bmatrix}
+4 & -2 & 2 \\ -2 & 2 & -4 \\ 2 & -4 & 11
+\end{bmatrix} \\
+L_{11} &=& \sqrt{A_{11}} = 2 \\
+L_{21} &=& \frac{A_{21}}{2} = -1 \\
+L_{31} &=& \frac{A_{31}}{L_{11}} = 1 \\
+L_{22} &=& \sqrt{A_{22} - L_{21}^2} = 1 \\
+L_{32} &=& (-4) + 1 = -3 \\
+L_{33} &=& \sqrt{11 - (1+3^2)} = \sqrt{1} = 1
+\end{eqnarray*}
+
+Cholesky-Zerlegung gefunden:
+\[
+\begin{bmatrix}
+2 & 0 & 0 \\
+-1 & 1 & 0 \\
+1 & -3 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+c_1 \\ c_2 \\ c_3
+\end{bmatrix}
+\] 
+
+\end{beispiel}
+
 
 \end{document}
