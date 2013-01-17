@@ -1,5 +1,3 @@
-## module sortJacobi
-
 def swapRows(v,i,j):
 	if len(v.getshape()) == 1:
 		v[i],v[j] = v[j],v[i]
