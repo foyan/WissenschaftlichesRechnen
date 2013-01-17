@@ -1,8 +1,4 @@
 ## module sortJacobi
-’’’ sortJacobi(lam,x).
-	Sorts the eigenvalues {lam} and eigenvectors [x]
-	in order of ascending eigenvalues.
-’’’
 
 def swapRows(v,i,j):
 	if len(v.getshape()) == 1:
