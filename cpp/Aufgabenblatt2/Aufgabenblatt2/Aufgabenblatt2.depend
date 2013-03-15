@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1363285783 source:/home/florian/Wissenschaftliches Rechnen/cpp/Aufgabenblatt2/Aufgabenblatt2/main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cmath>
+
