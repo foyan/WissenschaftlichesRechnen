@@ -3,6 +3,12 @@
 #include <cstdlib>
 #include <cmath>
 #include <climits>
+#include <algorithm>
+
+#include "include/Good.h"
+#include "include/Recipient.h"
+#include "include/Payment.h"
+#include "include/Order.h"
 
 using namespace std;
 
@@ -12,10 +18,13 @@ void aufgabe3();
 void aufgabe4();
 void aufgabe5();
 void aufgabe6();
+void aufgabe7();
+void aufgabe8();
+void aufgabe9();
 
 int main()
 {
-    aufgabe6();
+    aufgabe9();
     return 0;
 }
 
@@ -98,5 +107,78 @@ void aufgabe6() {
     }
 
     cout << "min: " << min << ", max: " << max << endl;
+}
+
+int power(int base, int exponent) {
+    int n = 1;
+    for (int i = 0; i < exponent; i++) {
+        n *= base;
+    }
+    return n;
+}
+
+void aufgabe7() {
+    cout << "b, e:";
+    int b, e;
+    cin >> b >> e;
+
+    cout << "b^e = " << power(b, e) << endl;
+}
+
+void reverse(string* n) {
+    reverse(n->begin(), n->end());
+}
+
+void aufgabe8() {
+    cout << "Zahl:";
+    string n;
+    cin >> n;
+    reverse(&n);
+    cout << n;
+}
+
+void aufgabe9() {
+    cout << "Ware:";
+    string wname;
+    cin >> wname;
+
+    Good* good = new Good();
+    good->setName(wname);
+
+    cout << "Adresse:";
+    string addr;
+    cin >> addr;
+
+    cout << "Land:";
+    string ctry;
+    cin >> ctry;
+
+    Recipient* rec = new Recipient();
+    rec->setAddress(addr);
+    rec->setCountryFromString(ctry);
+
+    cout << "Kreditkarten-Nummer:";
+    string ccnum;
+    cin >> ccnum;
+
+    cout << "Expiry Jahr:";
+    int expy;
+    cin >> expy;
+
+    cout << "Expiry Monat:";
+    int expm;
+    cin >> expm;
+
+    Payment* paym = new Payment();
+    paym->setCreditCardNumber(ccnum);
+    paym->setExpiry(expy, expm);
+
+    Order* order = new Order(paym, rec);
+    order->addGood(good);
+
+    delete order;
+    delete good;
+    delete rec;
+    delete paym;
 }
 
