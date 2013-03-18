@@ -25,10 +25,11 @@ void aufgabe9();
 void aufgabe10();
 void aufgabe11();
 void aufgabe12();
+void aufgabe13();
 
 int main()
 {
-    aufgabe12();
+    aufgabe13();
     return 0;
 }
 
@@ -286,4 +287,45 @@ void aufgabe12() {
     cin >> nbr;
     short* bobby = new short[nbr];
 
+    for (int i = 0; i < nbr; i++) {
+        bobby[i] = i % 2;
+    }
+
+    for (int i = 0; i < nbr; i++) {
+        cout << bobby[i];
+    }
+
+}
+
+#define KUHNIX
+
+struct dep_number_t {
+#ifdef KUHNIX
+long
+#endif
+#ifdef LUXUS
+char
+#endif
+#ifdef HASTA
+short
+#endif
+#ifdef BANANA
+#error "Banana Mac wird nicht unterstuetzt."
+#endif
+nbr;
+
+};
+
+dep_number_t add(dep_number_t a, dep_number_t b) {
+    dep_number_t c;
+    c.nbr = a.nbr + b.nbr;
+    cout << c.nbr;
+    return c;
+}
+
+void aufgabe13() {
+    cout << "Zwei Zahlen:";
+    dep_number_t a, b;
+    cin >> a.nbr >> b.nbr;
+    add(a, b);
 }
