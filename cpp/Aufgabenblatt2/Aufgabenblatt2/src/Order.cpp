@@ -4,13 +4,14 @@
 Order::Order(Payment* payment, Recipient* recipient) {
     this->payment = payment;
     this->recipient = recipient;
+    this->goods = new list<Good*>();
 }
 
 Order::~Order()
 {
-    //dtor
+    delete this->goods;
 }
 
 void Order::addGood(Good* good) {
-
+    this->goods->push_back(good);
 };
