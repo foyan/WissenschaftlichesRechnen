@@ -4,6 +4,7 @@
 #include <cmath>
 #include <climits>
 #include <algorithm>
+#include <list>
 
 #include "include/Good.h"
 #include "include/Recipient.h"
@@ -21,10 +22,13 @@ void aufgabe6();
 void aufgabe7();
 void aufgabe8();
 void aufgabe9();
+void aufgabe10();
+void aufgabe11();
+void aufgabe12();
 
 int main()
 {
-    aufgabe9();
+    aufgabe12();
     return 0;
 }
 
@@ -137,14 +141,22 @@ void aufgabe8() {
     cout << n;
 }
 
-void aufgabe9() {
+Good* ask_for_good() {
     cout << "Ware:";
     string wname;
     cin >> wname;
 
+    if(wname == "-") {
+        return NULL;
+    }
+
     Good* good = new Good();
     good->setName(wname);
 
+    return good;
+}
+
+Recipient* ask_for_recipient() {
     cout << "Adresse:";
     string addr;
     cin >> addr;
@@ -157,6 +169,10 @@ void aufgabe9() {
     rec->setAddress(addr);
     rec->setCountryFromString(ctry);
 
+    return rec;
+}
+
+Payment* ask_for_payment() {
     cout << "Kreditkarten-Nummer:";
     string ccnum;
     cin >> ccnum;
@@ -173,8 +189,17 @@ void aufgabe9() {
     paym->setCreditCardNumber(ccnum);
     paym->setExpiry(expy, expm);
 
+    return paym;
+}
+
+void aufgabe9() {
+
+    Good* good = ask_for_good();
+    Recipient* rec = ask_for_recipient();
+    Payment* paym = ask_for_payment();
+
     Order* order = new Order(paym, rec);
-    order->addGood(good);
+    order->add_good(good);
 
     delete order;
     delete good;
@@ -182,3 +207,83 @@ void aufgabe9() {
     delete paym;
 }
 
+void aufgabe10() {
+
+    Good* good = ask_for_good();
+    Recipient* rec = ask_for_recipient();
+    Payment* paym = ask_for_payment();
+
+    Order* order = new Order(paym, rec);
+
+    list<Good*>* goods = new list<Good*>();
+
+    int i = 0;
+    while (good != NULL && i++ < 10) {
+        order->add_good(good);
+        goods->push_back(good);
+        cout << "More? Type - when done.";
+        good = ask_for_good();
+    }
+
+    delete order;
+
+    for (list<Good*>::iterator i = goods->begin(); i != goods->end(); i++) {
+        delete (*i);
+    }
+
+    delete goods;
+    delete rec;
+    delete paym;
+
+}
+
+void print_order(Order* order) {
+    cout << "Lieferadresse: " << order->get_recipient()->getAddress() << ", " << order->get_recipient()->getCountry() << endl;
+    cout << "Kreditkarte: " << order->get_payment()->getCreditCardNumber()
+         << ", exp " << order->get_payment()->getExpiryYear() << "/" << order->get_payment()->getExpiryMonth() << endl;
+
+    for (list<Good*>::const_iterator i = order->goods_begin(); i != order->goods_end(); i++) {
+        cout << "  - Ware: " << (*i)->getName() << endl;
+    }
+
+}
+
+void aufgabe11() {
+
+    Good* good = ask_for_good();
+    Recipient* rec = ask_for_recipient();
+    Payment* paym = ask_for_payment();
+
+    Order* order = new Order(paym, rec);
+
+    list<Good*>* goods = new list<Good*>();
+
+    int i = 0;
+    while (good != NULL && i++ < 10) {
+        order->add_good(good);
+        goods->push_back(good);
+        cout << "More? Type - when done.";
+        good = ask_for_good();
+    }
+
+    print_order(order);
+
+    delete order;
+
+    for (list<Good*>::iterator i = goods->begin(); i != goods->end(); i++) {
+        delete (*i);
+    }
+
+    delete goods;
+    delete rec;
+    delete paym;
+
+}
+
+void aufgabe12() {
+    cout << "Anzahl:";
+    int nbr;
+    cin >> nbr;
+    short* bobby = new short[nbr];
+
+}

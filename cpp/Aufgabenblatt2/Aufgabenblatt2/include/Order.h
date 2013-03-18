@@ -13,7 +13,15 @@ class Order
         Order(Payment*, Recipient*);
         virtual ~Order();
 
-        void addGood(Good*);
+        void add_good(Good*);
+
+        Payment* get_payment();
+        Recipient* get_recipient();
+
+        list<Good*>::const_iterator goods_begin();
+        list<Good*>::const_iterator goods_end();
+
+
     protected:
     private:
         Payment* payment;
