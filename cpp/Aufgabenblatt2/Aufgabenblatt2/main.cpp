@@ -11,7 +11,7 @@
 #include "include/Payment.h"
 #include "include/Order.h"
 
-using namespace std;
+/*using namespace std;
 
 void aufgabe1();
 void aufgabe2();
@@ -27,7 +27,7 @@ void aufgabe11();
 void aufgabe12();
 void aufgabe13();
 
-int main()
+int mainz()
 {
     aufgabe13();
     return 0;
@@ -329,3 +329,4 @@ void aufgabe13() {
     cin >> a.nbr >> b.nbr;
     add(a, b);
 }
+*/

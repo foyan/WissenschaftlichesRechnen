@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1365704655 source:/home/florian/WissenschaftlichesRechnen/cpp/Aufgabenblatt3/MatrixMantra/main.cpp
+	<iostream>
+	"Matrix.h"
+
+1365698740 source:/home/florian/WissenschaftlichesRechnen/cpp/Aufgabenblatt3/MatrixMantra/src/Matrix.cpp
+	<map>
+	"Matrix.h"
+
+1365705127 /home/florian/WissenschaftlichesRechnen/cpp/Aufgabenblatt3/MatrixMantra/include/Matrix.h
+	<cmath>
+	<map>
+	<stdexcept>
+	<string>
+	<sstream>
+
